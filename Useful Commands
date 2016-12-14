@@ -1,0 +1,709 @@
+dmles-pt
+=========
+To start local web server
+  -- gulp serve
+  -- username: site.all.123
+      admin:  user.admin.123
+
+dmles-tools
+==============
+Swagger
+  -- file:///C:/workspace/dmles-tools/swagger/swagger-ui-master/dist/index.html
+  -- Start typeing http...      
+
+dmles-bt
+===========
+Mongo Setup and Seed Data
+-- https://jpsncm1012.jmlfdc.mil/confluence/display/DSE/MongoDB+Developer+Installation+and+Setup 
+
+Run Locally
+-- https://jpsncm1012.jmlfdc.mil/confluence/display/DSE/Run+Business+Tier+Locally 
+
+
+Gradle
+=======
+-- https://docs.gradle.org/current/userguide/
+-- -q silence option
+
+To Run
+  gradle <task_name>
+
+Listing Tasks
+  gradle -q tasks  
+
+MongoDB
+========
+db.getCollection('EquipmentRequests').find({ _id : ObjectId("57152abfa70f11c0cdad908f") })
+
+Grunt
+=====
+http://gruntjs.com/getting-started
+http://gruntjs.com/project-scaffolding
+
+#To debug
+node-debug grunt mochaTest:routes
+  -- http://stackoverflow.com/questions/24001043/how-to-debug-a-gruntfile-with-breakpoints-using-node-inspector-windows-7
+
+#grunt-instanbul
+  https://github.com/gregjopa/express-app-testing-demo
+
+#Pass in a variable from the command line
+--reportType = name
+-lcov = value
+i.e. grunt --reportType-lcov test
+
+Karma
+=====
+# Install Karma:
+$ npm install karma --save-dev
+
+# Install plugins that your project needs:
+$ npm install karma-jasmine karma-chrome-launcher --save-dev
+
+# Can run hte karma command simply by typing Karma
+npm install -g karma-cli
+
+# Init, ctreates config file in dir you started
+karma init karm.conf.js
+
+# if package.json exsists, will download dependencies -- no need to run npm install <package_name>
+npm install
+
+NPM
+===
+List all global packages
+  npm list -g
+
+NodeJS
+======
+To debug in Chrome
+node-debug <jsfile>.js
+
+Node Package Manager (npm)
+npm -g // install globally
+  C:\Users\john.tsinonis\AppData\Roaming\npm\node_modules
+
+require.resolve('some_module') command, which will show you the path to the module that node finds as a result of the tree climbing process
+
+has two global variables:
+  globals and process
+
+# Install to dependency list
+npm install express --save  // --save option
+
+# start from script i.e. package.json-->scripts-->start
+npm start
+
+# run an aribitrary script
+  -- http://www.jayway.com/2014/03/28/running-scripts-with-npm/
+
+npm run <script>
+i.e. npm run test-l
+
+express
+=======
+npm install express -g
+npm install express-generator -g //creats directory structure
+
+Oracle:
+========
+Start Service (ladm is needed)
+  net start OracleServiceXE
+
+Stop Service (ladm is needed)
+  net stop OracleServiceXE
+
+  SID: XE, 
+  HOSTNAME: 127.0.0.1, 
+  PORT: 1521
+
+SYSTEM/windows98  
+
+Jenkins:
+========
+https://jmlv224144:8443/jenkins
+
+Config
+  C:\Program Files (x86)\Jenkins
+
+MTOM
+=====
+Note: Streaming MTOM cannot be used in conjunction with message encryption.
+
+http://docs.oracle.com/cd/E14571_01/web.1111/e13734/mtom.htm#WSADV141
+
+
+Useful Commands
+================
+DOS
+===
+fsutil file createnew 500mb.txt 524288000 -- creates 50MB file for testing
+fsutil file createnew 1mb.txt 104857600
+
+ActiveMQ
+========
+To start:
+  C:\Users\john.tsinonis\Downloads\apache-activemq-5.9.1\bin\activemq
+        OR
+  C:\Users\john.tsinonis\Downloads\apache-activemq-5.9.1\bin\activemq > c:/temp/smlog  2>&1 &;
+
+Check to see if running:
+  netstat -an|find "61616"
+
+
+To Monitor ActiveMQ:
+  http://localhost:8161/admin
+  Username/password: admin/admin
+
+To stop:
+  CTRL-C
+
+  ps -ef|grep activemq
+  kill [PID]
+    where [PID] is the process id of the ActiveMQ process.
+
+Other
+======
+producing md5 checksum
+md5sum bcprov-jdk15on-1.49.jar 
+22bce81293a4fc749e68026649465613 *bcprov-jdk15on-1.49.jar
+
+
+.NET
+====
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin>svcutil http://127.0.0.1:8080/JMAR_SEWebServices/services/JMARServiceManagerPort?wsdl /d:c:/data
+C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\svcutil http://jwlt225202.ad.dmlss.detrick.army.mil:8080/JMARWS/services/JMARServiceManagerPort?wsdl /d:c:/data
+
+C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\bin\NETFX 4.5.1 Tools\svcutil https://127.0.0.1:10443/fedizservice/GreeterService?wsdl /d:/data/cs
+
+svcutil https://localhost:8443/WebServiceProvider/services/DoubleItPortTypeImplPort?wsdl /d:c:/data
+svcutil https://jwlt225202.ad.dmlss.detrick.army.mil:8445/SecurityTokenService/services/TransportPort?wsdl /d:c:/data
+
+View or manage local windows certs
+Start --> certmgr.msc
+
+GIT
+===
+Stash
+  git stash pop
+  git stash
+
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull <remote> <branch>
+
+  git pull origin master
+  -- http://stackoverflow.com/questions/32056324/git-pull-there-is-no-tracking-information-for-the-current-branch
+
+#Git Merge
+  http://stackoverflow.com/questions/5601931/best-and-safest-way-to-merge-a-git-branch-into-master
+
+  git checkout master
+  git pull
+  git merge <new_branch>
+
+#Get number of commit messages
+  git rev-list HEAD --count
+
+#pretty print top 10
+  git log --pretty=oneline -10
+
+#Git repo for system admin
+  C:\Windows\System32\config\systemprofile\.m2
+  
+
+#Change origin
+git remote set-url origin git@github.com:ppreyer/first_app.git
+  -- http://stackoverflow.com/questions/10904339/github-fatal-remote-origin-already-exists
+
+#Change inited repor to bare repo
+  http://stackoverflow.com/questions/2199897/how-to-convert-a-normal-git-repository-to-a-bare-one
+  
+$ mv repo/.git repo.git
+$ git --git-dir=repo.git config core.bare true
+$ rm -rf repo
+
+#Checkout git repo based on tags
+==================================
+-- git clone <the_whole_repo>
+-- git tag -l ## to list the tags
+-- git checkout tags/<tag_name>
+
+
+#How to untrack a file
+git rm --cached <file_name>
+
+# compare local git branch with remote branch
+git fetch ## updates remote-tracking branches, does not affect local files
+git diff <local branch> <remote-tracking branch>
+
+# Git clone based on branch 
+git clone -b 620_40 https://john.tsinonis@jmlv224145:8444/r/JMAR.git
+
+#Enable Sparse Checkouts
+http://briancoyner.github.io/blog/2013/06/05/git-sparse-checkout/
+git init
+git config core.sparsecheckout true
+echo Help >> .git/info/sparse-checkout
+git remote add -f origin https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR.git
+git pull origin master
+
+#How do I force Git to overwrite local files on pull?
+git fetch --all
+git reset --hard origin/master
+
+#Check chnages on remote (origin) git repo -- ^ -- previous commit,  ^^ -- previous two commits
+git diff origin/master^
+git diff origin/master^ --name-status #just lists the files that have changed
+ git diff origin/620_70 --name-only
+
+#DIFF with previosu commit
+git diff HEAD pom.xml
+
+#Rebase, remove previous commit
+git rebase -i HEAD~4 // where ~ go back previous commits
+
+#change last commit message
+git commit --amend -m "new comment"
+
+#change last commit date
+git commit --amend -m "commit message" --date="$(date -R)"
+
+#change all commit messages
+-- http://stackoverflow.com/questions/179123/edit-an-incorrect-commit-message-in-git
+-- git rebase --interactive
+
+#Pretty print
+git log --pretty=oneline
+
+#To revert to previous commit, ignoring any changes:
+git reset --hard HEAD^
+
+git reset --hard <commit_number> #get from git log --oneline
+
+#To revert to previous commit, keeping any changes:
+git reset --soft HEAD^
+
+#To clone a specific directory
+git clone -b 620_40 https://john.tsinonis@jmlv224145:8444/r/JMAR.git some_directory
+
+#The line below shows the syntax to set sslVerify to false during a new clone command.
+git -c http.sslVerify=false clone https://username:password@jmlv224145:8444/r/JMAR_SEWebServices.git
+
+git -c http.sslVerify=false clone https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR-Beta.git
+git -c http.sslVerify=false clone https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR-Beta.git
+git -c http.sslVerify=false clone https://john.tsinonis@jmlv224145:8444/r/CUI/Dev.git
+git -c http.sslVerify=false clone https://jmlv224144:8443/gitblit/r/DmlssNew/BootstrapNet.git
+
+git config http.sslVerify false -global
+git clone https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR_SEWebServices.git
+
+
+git -c http.sslVerify=false clone https://john.tsinonis:windows98@jmlv224144:8443/r/JMAR-Beta.git
+
+https://jmlv224145:8444/r/JMAR_SEWebServices.git
+git remote set-url origin https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR_SEWebServices.git 
+git remote set-url origin https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR_ETLServices.git 
+git remote set-url origin https://john.tsinonis:windows98@jmlv224145:8444/r/JMAR-Beta.git 
+git remote set-url origin https://john.tsinonis:windows98@jmlv224145:8444/r/research/Prototypes.git
+ 
+.git/config
+previous repo -- url = X:\\Systems Engineering\\JMAR\\Git\\JMAR_SEWebServices.git
+
+#Git log to get commits only for a specific branch
+git log <branch> --not master
+
+#check where the HEAD is pointing to
+git symbolic-ref HEAD
+
+#List git branches
+git branch
+
+#List remote git branches
+git branch -r
+or 
+git remote show origin
+
+#Moves the current branch backward by two commits, effectively removing the two snapshots we just created #from the project history
+git reset HEAD~2
+
+#List remote branches
+git remote show origin 
+or 
+git ls-remote
+
+#Remove remote branch
+=====================
+git push origin :<branch-name>
+
+CURL
+====
+To display headers
+  -- curl -D - "http://localhost:8080/rest/test"
+  
+Post SOAP message to server, -k insecure connection
+
+curl \
+-k --header "content-type: text/soap+xml; charset=utf-8" \
+--data @cxf_client_soap_envelope.xml \
+https://jwlt225202.ad.dmlss.detrick.army.mil/JMARWS/services/JMARServiceManagerImpPort
+
+curl \
+-k --header "content-type: text/soap+xml; charset=utf-8" \
+--data @soapui_client_envelope.xml \
+https://jwlt225202.ad.dmlss.detrick.army.mil/JMARWS/services/JMARServiceManagerImpPort
+
+Maven
+=====
+#Test Arquillian
+mvn test -pl FileExchange/ -am -Pwildfly-managed -Dtest.skip=false
+
+
+#Change Version Numbers
+  -- mvn versions:set -DnewVersion=6.2.0.70-SNAPSHOT -DgenerateBackupPoms=false
+
+  If you made a mistake, do
+    -- mvn versions:revert
+  Afterwards, or
+    -- mvn versions:commit
+  If happy with results    
+
+  -- http://stackoverflow.com/questions/5726291/updating-version-numbers-of-modules-in-a-multi-module-maven-project
+
+#Archetypes
+  -- http://maven.apache.org/archetype/maven-archetype-plugin/advanced-usage.html#
+  -- http://maven.apache.org/archetype/maven-archetype-plugin/create-from-project-mojo.html
+  -- http://maven.apache.org/archetype/maven-archetype-plugin/examples/generate-alternative-catalog.html
+
+  artifactid: LogManager
+  moduleClassName: Logmanager
+  packageModuleName: logmanager
+
+    Use Local catalog
+      -- mvn archetype:generate -DarchetypeCatalog=local  
+
+    Use Remote catalog
+      -- mvn archetype:generate -DarchetypeCatalog=https://jwsrv116.ad.dmlss.detrick.army.mil/nexus/content/repositories/snapshots
+
+#Remote deploy
+mvn clean compile package wildfly:deploy -Dhostname=140.139.224.44 -Dport=10090 -Dusername=dmlesadmin -Dpassword='qwerQWER1234!@#$'
+
+mvn clean compile package -Pjwsrv116 -pl EquipmentManagement/ -am wildfly:deploy -Dhostname=140.139.227.60 -Dport=9990 -Dusername=dmlesAdmin -Dpassword=qwerQWER1234!@#$ -DskipTests=true
+
+
+#To fix PKIX error when connecting to a SSL server
+  -Dmaven.wagon.http.ssl.insecure=true 
+  
+#Which settings.xml is Maven using
+=================================
+mvn -X
+
+#How to specify alternate pom file
+mvn install -f <pom_file>
+
+#viewing the effective-pom i.e. substition variables are demistified
+mvn help:effective-pom
+
+#Exclude modules from build 
+
+-pl \!<module_name> ##if run from bash need to escape ! with \, i.e. \!Help  
+
+#Deploy to Nexus
+================
+mvn deploy -s settings.xml  ##from root JMAR dir
+mvn deploy -s ../../settings.xml
+mvn deploy -f <pom_file>
+
+#Eclipse and Maven settings
+=============================
+#View dependency tree
+  mvn dependency:tree
+
+#Point eclipse to Maven settings.xml file
+  http://stackoverflow.com/questions/7737710/maven-plugin-not-using-eclipses-proxy-settings
+
+#To use settings.xml and compile module
+mvn clean compile -s settings.xml -pl item_receipt_dashboard -am -P DEVL-env
+
+# To execute an individual module, must be run form parent dir
+===============================================================
+http://stackoverflow.com/questions/1114026/maven-modules-building-a-single-specific-module
+mvn clean compile -pl JMAR-UploadServices -am
+mvn clean compile -pl JMAR-ETLServices -am
+mvn clean compile -pl JMAR-CommonServices -am
+mvn clean compile -pl equipment_reporting -am
+mvn clean compile -pl item_receipt_dashboard -am -DskipTests=true
+
+
+# To execute a goal from a plugin
+mvn groupId:artifactId:goal
+
+# Commit files
+mvn -Dmessage="<commit_log_here>" scm:checkin
+
+#For update
+mvn scm:update
+
+#where <project> is root, this install the wars/jars into local .m2 repository, this enables compiling
+#individual modules
+mvn install -pl JMAR-ETLServices/ -am -DskipTests=true
+
+# will compile individual module (only in maven 2)
+mvn reactor:make -Dmake:artifacts=uploadfile
+
+#Create JAR/WAR files
+mvn package -DskipTests=true
+
+#List archetypes
+=================
+mvn archetype:generate
+
+#JAR Archetype
+===============
+mvn archetype:generate \
+  -DgroupId=gov.dmles.nifi \
+  -DartifactId=nifi-dmles-utils \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DinteractiveMode=false
+DN
+#Site docs
+===========
+mvn archetype:generate \
+  -DarchetypeGroupId=org.apache.maven.archetypes \
+  -DarchetypeArtifactId=maven-archetype-site \
+  -DgroupId=com.mycompany.app \
+  -DartifactId=my-app-site
+  
+#Web app archetype
+====================
+mvn archetype:generate \
+    -DarchetypeGroupId=org.apache.maven.archetypes \
+    -DarchetypeArtifactId=maven-archetype-webapp \
+    -DgroupId=gov.jmar \
+    -DartifactId=JMARWS \
+    -DinteractiveMode=false
+
+mvn archetype:generate \
+    -DarchetypeGroupId=com.liferay.maven.archetypes \
+    -DarchetypeArtifactId=liferay-portlet-archetype \
+    -DarchetypeVersion=6.0.5 \
+    -DgroupId=com.jmar \
+    -DartifactId=item_receipts_reporting \
+    -DinteractiveMode=false    
+
+#Install local lib
+==================
+mvn install:install-file -Dfile="/c/Data/JMAR/cots/EclipsePlugIn/java.wsdl/1.5.1/lib/javax.wsdl_1.5.1.v200806030408.jar" -DgroupId=java.wsdl -DartifactId=java.wsdl -Dversion=1.5 -Dpackaging=jar -DlocalRepositoryPath=/x/JMAR/Maven/repo -DcreateChecksum=true
+
+mvn install:install-file -Dfile="C:\Data\JMAR\cots\unknown\DataJunction\000\lib\djec.jar" -DgroupId=datajunction -DartifactId=djec -Dversion=0.0.0 -Dpackaging=jar -DlocalRepositoryPath=X:\JMAR\Maven\repo -DcreateChecksum=true
+
+https://maven.apache.org/plugins/maven-war-plugin/usage.html
+mvn clean
+mvn compile
+mvn clean compile
+mvn compile war:war -P local
+
+#Deploy to Tomcat
+=================
+mvn clean compile tomcat7:deploy -DskipTests=true -P local
+mvn clean compile tomcat7:undeploy -DskipTests=true -P local
+mvn clean compile tomcat7:redeploy -DskipTests=true -P tomcat
+
+#Start jBoss 
+=============
+standalone.bat --server-config=standalone-full.xml
+
+#Deploy to Jboss
+=================
+mvn jboss-as:deploy -DskipTests=true
+mvn jboss-as:redeploy -DskipTests=true
+mvn jboss-as:undeploy -DskipTests=true
+
+
+
+#Build for dev env
+===================
+mvn process-classes -P dev && mvn compile war:war -P dev
+
+#Build for local env
+=======================
+mvn process-classes -P local && mvn compile war:war -P local
+
+#Run javadoc
+=============
+mvn javadoc:javadoc
+
+#Runs single Test class
+========================
+#Examples: http://maven.apache.org/surefire/maven-surefire-plugin/examples/single-test.html
+mvn -P local -Dtest=JMARWSTest test
+
+#Run just one method
+=====================
+mvn -P local -Dtest=JMARWSTest#getWebServicesMethods test
+mvn -Dtest=AppTest#testAnnotation test
+
+#Test compile only
+==================
+mvn test-compile
+
+# wsd2java plugin
+=================
+mvn generate-test-sources -P local
+
+# java2ws plugin
+=================
+mvn compile process-classes -P local
+
+#run Ant target
+================
+mvn process-resources -Dtarget="patchWSDL"
+
+#Steps to create WAR
+1. mvn compile process-classes -P <profile_name> -- where profile name enter local, dev, prod
+2. mvn clean compile war:war -P <profile_name>
+
+#Fortify
+--Need to give write priveleges to directory i.e C:\Program Files\HP_Fortify where Fortify is installed or the mvn cleann install will fail
+
+#To run Maven Fortify
+=====================
+mvn war:war -P local
+mvn sca:translate sca:scan
+
+=============================================================
+
+Check contents of certicate
+openssl x509 -text -in server.crt
+
+DMLSS Servers
+jwjtest202.ad.dmlss.detrick.army.mil
+jwjdev622.ad.dmlss.detrick.army.mil
+
+JWJDEV22
+=========
+\\jwjdev622\d$\Certs\ssl.crt
+
+#Server URL
+https://jwjdev622.ad.dmlss.detrick.army.mil/JMARWS/services/JMARServiceManagerPort?wsdl
+
+Check ports open and filter on port 80
+netstat -an | grep 80
+
+SOAP SoapUI-Pro-4
+==================
+"C:\Program Files\SmartBear\SoapUI-Pro-4.6.4\jre\bin\keytool.exe" -import -keystore cacerts -alias PSSRTCERT01-CA -file "C:\Data\Certs\server.der"
+
+Create JKS keystore
+====================
+keytool -genkeypair -alias tomcat.server -keyalg RSA -sigalg SHA1withRSA -validity 3650 -keypass password -storepass password -keystore tomcat-server.jks -dname "CN=jmlv224144.ad.dmlss.detrick.army.mil"
+
+## View content of JKS
+keytool -list -keystore tomcat-server.jks -storepass password -storetype JKS -v
+
+Truststore (how to create a new truststore importing a key)
+============================================================
+%JAVA_HOME%/bin/keytool -import -file JohnTsinonis.cer -alias JohnTsinonis -keystore truststore
+
+Convert JKS to PEM
+==================
+Step 1.
+$JAVA_HOME/bin/keytool -importkeystore -srckeystore client.jks -destkeystore client.p12 -srcstoretype jks -deststoretype pkcs12
+
+Step 2.
+openssl pkcs12 -in client.p12 -out client.pem
+
+
+Client Config SSL Steps
+========================
+
+1.  Create PKCS#12 keystore from existing .crt and .key file
+==========================================================
+#http://stackoverflow.com/questions/11952274/how-can-i-create-keystore-from-an-existing-certificate-abc-crt-and-abc-key-fil
+#openssl pkcs12 -export -in server.crt -inkey server.key -out server.p12
+openssl pkcs12 -export -in server.crt -inkey server.key -out server.p12 -name serverkey
+
+2.  Convert PKCS#12 keystore to JKS keystore
+=========================================
+#$JAVA_HOME/bin/keytool -importkeystore -srckeystore server.p12 -srcstoretype PKCS12 -destkeystore server.jks -deststoretype JKS
+$JAVA_HOME/bin/keytool -importkeystore -deststorepass password -destkeypass password -destkeystore server.jks -srckeystore server.p12 -srcstoretype PKCS12 -srcstorepass password -alias serverkey
+
+3. Update cacerts in <java_home>/jre/lib/security
+================================================
+$JAVA_HOME/bin/keytool.exe -import -keystore cacerts -alias serverkey -file "C:\Data\Certs\server.crt"
+
+Convert a JKS file to PKCS12 format (Java 1.6.x and above)
+==========================================================
+keytool -importkeystore -srckeystore clientstore.jks -destkeystore clientstore.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass cspass -deststorepass cspass -srcalias myclientkey -destalias myclientkey -srckeypass ckpass -destkeypass ckpass -noprompt
+
+keytool -importkeystore -srckeystore stsstore.jks -destkeystore stsstore.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass stsspass -deststorepass stsspass -srcalias mystskey -destalias mystskey -srckeypass stsspass -destkeypass stsspass -noprompt
+
+keytool -importkeystore -srckeystore servicestore.jks -destkeystore servicestore.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass sspass -deststorepass sspass -srcalias myservicekey -destalias myservicekey -srckeypass sspass -destkeypass sspass -noprompt
+
+keytool -importkeystore -srckeystore client.jks -destkeystore client.p12 -srcstoretype JKS -deststoretype PKCS12 -srcstorepass password -deststorepass password -srcalias clientkey -destalias clientkey -srckeypass password -destkeypass password -noprompt
+
+Convert a PKCS12 to a JKS format (Java 1.6.x and above)
+==========================================================
+keytool -importkeystore -srckeystore clientstore.p12 -destkeystore clientstore1.jks -srcstoretype PKCS12 -deststoretype JKS -srcstorepass cspass -deststorepass cspass -srcalias myclientkey -destalias myclientkey -srckeypass ckpass -destkeypass ckpass -noprompt
+
+#Export the Server’s Public Certificate 
+========================================
+keytool -export -rfc -alias myservicekey -file myservicekey.cer -keystore servicestore.jks -storepass sspass
+keytool -export -rfc -alias mystskey -file mystskey.cer -keystore stsstore.jks -storepass stsspass
+
+#Import it in to the Client’s Keystore
+=======================================
+keytool -import -keystore $clientkeystorename -alias $serverkeyalias -file $serverkeyalias.cer -storepass $clientstorepassword -noprompt
+
+keytool -importcert -keystore clientstore.p12 -storetype pkcs12 -storepass cspass -alias mystskey -keypass ckpass -file mystskey.cer -v
+
+#Export the Server’s Public Certificate and Import it in to the Client’s Keystore
+$JAVA_HOME/bin/keytool -export -rfc -alias $serverkeyalias -file $serverkeyalias.cer -keystore $serverkeystorename -storepass $serverstorepassword
+keytool -import -keystore clientstore.p12 -alias myservicekey -file myservicekey.cer -storepass cspass -noprompt
+
+#Export to .pem format
+=======================
+keytool -exportcert -alias mystskey -keystore ststrust.jks -storepass storepass -file sts.pem
+keytool -exportcert -alias realma -keystore stsrealm_a.jks -storepass storepass -file realma.pem
+keytool -exportcert -alias mytomwspkey -keystore wsp-ssl-server.jks -storepass tompass -file wsp-ssl-server.pem
+
+keytool -exportcert -alias myservicekey -keystore servicestore.jks -storepass sspass -file servicestore.pem
+keytool -exportcert -alias mystskey -keystore stsstore.jks -storepass stsspass -file stsstore.pem
+
+
+
+Apache
+======
+# this option is mandatory to force apache to forward the client cert data to tomcat
+SSLOptions +ExportCertData
+
+
+Tomcat
+======
+# Tomcat Gotchas
+-- make sure .jks store and key password are the same so Tomcat https Connector can load keystore, otherwise you will get key error
+-- client and server keystores should not be added to mvn resources folder.  The .jks files get corrupt during a build in the target directory.  Should point to an alternate directory. 
+
+#To run Tomcat on the command line
+catalina run 
+
+<!-- Define an AJP 1.3 Connector on port 8009 -->
+<Connector port="8009" enableLookups="false" redirectPort="8443" protocol="AJP/1.3" useSendfile="false" />
+
+
+<!-- Define a SSL HTTP/1.1 Connector on port 8443  -->
+<Connector port="8443" protocol="HTTP/1.1" 
+    maxThreads="150" scheme="https" secure="true"
+    clientAuth="true" 
+    sslProtocol="TLS"
+    SSLEnabled="true"
+    SSLVerifyClient="require"
+    SSLEngine="on"
+    SSLVerifyDepth="6"
+    keystoreFile="c:\data\certs\tomcat_server.jks"
+    keystorePass="password"
+    truststoreFile="c:\data\certs\tomcat_truststore.jks"
+    truststorepass="password"
+/>

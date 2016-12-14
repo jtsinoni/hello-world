@@ -1,0 +1,200 @@
+jBoss Notes:
+============
+To enable remote JNDI connections from a remote Java client
+	-- Make sure you create an Application Real User
+	-- In the InitialContect object pass in addition to Initail Context Factory and Provider Url
+		pass:  username and password
+
+		i.e
+		===
+		final Properties env = new Properties();
+		env.put(Context.INITIAL_CONTEXT_FACTORY, jndiService.getInitialContext());
+		env.put(Context.PROVIDER_URL, jndiService.getNamingProviderUrl());
+		
+		env.put(Context.SECURITY_PRINCIPAL, "jndi");
+		env.put(Context.SECURITY_CREDENTIALS, "qwerQWER1234!@#$");
+
+		new InitialContext(env);
+
+		
+
+Enable Debugging in jboss
+	cd to JBOSS_HOME\bin
+	modify standalone.conf.bat
+		-- uncomment Sample JPDA settings for remote socket debugging
+
+jw8cui04 Beta
+	secret value="cXdlclFXRVIxMjM0IUAjJA=="
+
+jwlt225202 (localhost)
+	To represent the user add the following to the server-identities definition <secret value="YWRtaW4=" />
+
+jwsrv116
+	Management Realm (dmlesAdmin)
+		To represent the user add the following to the server-identities definition <secret
+		value="cXdlclFXRVIxMjM0IUAjJA==" />
+
+	Application Realm (jndi)
+		To represent the user add the following
+		ret value="cXdlclFXRVIxMjM0IUAjJA==" />
+
+jconsole
+	-- service:jmx:remote+http://jw8cui04.ad.dmlss.detrick.army.mil:9990
+	-- service:jmx:remote+http://jwsrv116:9990
+	
+Where jBoss stores it's web deployments:
+	-- JBOSS_HOME\jboss-eap-7.0.0.Beta\jboss-eap-7.0\standalone\data\content\..\....
+	-- To find the exact one your looking for:
+		-- Open standalonexxx.xml
+		-- Scroll down to the deployments section and look for the sha1 number of the deployement .i.e
+				<deployment name="activiti-rest.war" runtime-name="activiti-rest.war">
+		            <content sha1="ff0654bf02a1c1a0eac69647fd14ae88db7e76de"/>
+		        </deployment>
+		
+Wildlfy 9.0.2.Final
+===================
+Download Location:
+	-- http://wildfly.org/downloads/
+	-- Java EE7 Full & Web Distribution
+
+-- JBOSS_HOME\bin\standalone.bat --server-config=standalone-full.xml	
+
+JMS
+	To view via console
+		-- Server: Standalone Server    Monitor: Subsystems    Subsystem: JMS Destinations
+
+	Or, via jconsole
+		Mbeans Tab --> jboss-as --> messagin --> default --> jms.queue.XXX where XXX is the queue name --> operations
+
+Use CLI operation to add/flush/remove, etc to JMS queues
+	-- JBOSS_HOME\bin\jboss-cli.bat --connect
+		-- [standalone@localhost:9990 /] jms-queue --help --commands	
+
+To remove the issue when connecting via via remote JNDI i.e. javax.jms.JMSSecurityException: Unable to validate user: null
+	-- Add the follwoing under (this is just temporary):
+		    <subsystem xmlns="urn:jboss:domain:messaging:3.0">
+            	<hornetq-server>
+            		<security-enabled>false</security-enabled>
+    -- http://stackoverflow.com/questions/9540456/javax-jms-jmssecurityexception-unable-to-validate-user-null
+    
+JMX
+	-- https://docs.jboss.org/author/display/WFLY10/JMX+subsystem+configuration
+	-- service:jmx:remote+http://localhost:9990            				
+
+
+EAP 7.0.0.beta
+=================
+EAP7_HOME = C:\workspace\jboss-eap-7.0.0.beta
+
+By default the realm name used by JBoss EAP is "ManagementRealm" this is already selected by default.
+
+To use the Messaging services i.e. ActiveMQ-Artemis you need to start the server in full mode
+	-- EAP7_HOME\bin\standalone.bat -c standalone-full.xml
+
+Download Location:
+	https://www.jboss.org/download-manager/file/jboss-eap-7.0.0.Beta.zip
+
+Docs:
+	-- https://access.redhat.com/documentation/en/jboss-enterprise-application-platform/
+	
+Add Admin User:
+	-- cd EAP7_HOME\jboss-eap-7.0\bin
+	-- add-user.bat
+		-- management user, hit enter
+		-- enter username and password, etc
+		-- select no for AS user
+
+Log location:
+	EAP7_HOME\jboss-eap-7.0\standalone\log
+
+jBoss Work Area i.e. cached files, exploded wars
+	EAP7_HOME\jboss-eap-7.0\standalone\tmp	
+
+To start console:
+	http://localhost:9990/console/ 
+
+	username/password: admin/windows98
+
+Install Location:
+	/c/workspace/jboss-eap-7.0.0.beta	
+
+Examples Location:
+	EAP7_HOME/jboss-eap-7.0.0.beta1-quickstarts/	
+
+To Start Server:
+	-- EAP7_HOME\bin\standalone.bat
+
+To Deploy (locally):
+	-- Make sure you have started the JBoss EAP server
+	-- cd to pom location
+		-- mvn clean package wildfly:deploy
+		-- mvn clean package -pl wildfly:deploy
+
+To Undeploy (locally):
+	-- Make sure you have started the JBoss EAP server
+	-- cd to pom location
+		-- mvn wildfly:undeploy
+
+		Note: below from root pom location
+		-- mvn clean package -pl elasticsearch -am wildfly:deploy
+To View Application in Browser:
+	http://localhost:8080/<app-context-name>	
+
+AJP
+====
+	-- Edit "EAP7_HOME\jboss-eap-7.0\standalone\configuration\standalone.xml"
+		-- Add the following line under the section 
+			<subsystem xmlns="urn:jboss:domain:undertow:3.0">
+				<server name="default-server">
+					<ajp-listener name="default.ajp" socket-binding="ajp"/>
+					....
+				</server>
+				....
+			</subsystem>
+			
+		-- restart jboss
+
+		-- To View or make changes in Console (http://localhost:9990/console/ )
+			-- Configuration --> Subsystems --> Subsystem: Undertow --> Settings: HTTP
+
+						
+	-- Check to see if AJP is running (in DOS)
+		-- netstat -an | find "8009"	
+
+To start a different confige file
+==================================
+EAP7_HOME\bin\standalone.bat -c standalone-full.xml		
+
+ActiveMQ-Artemis module Location
+	-- "C:\workspace\jboss-eap-7.0.0.Beta\jboss-eap-7.0\modules\system\layers\base\org\apache\activemq\artemis\main\module.xml"
+
+Change cache-container settings, if not, web apps do not work properly
+		from
+
+            <cache-container name="web" module="org.wildfly.clustering.web.infinispan" default-cache="passivation">
+                <local-cache name="passivation">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store passivation="true" purge="false"/>
+                </local-cache>
+                <local-cache name="persistent">
+                    <locking isolation="REPEATABLE_READ"/>
+                    <transaction mode="BATCH"/>
+                    <file-store passivation="false" purge="false"/>
+                </local-cache>
+            </cache-container>
+
+		to
+
+            <cache-container name="web" module="org.wildfly.clustering.web.infinispan" default-cache="passivation">
+                <local-cache name="passivation">
+                    <locking isolation="READ_COMMITTED"/>
+                    <transaction locking="OPTIMISTIC" mode="NONE"/>
+                    <file-store passivation="true" purge="false"/>
+                </local-cache>
+                <local-cache name="persistent">
+                    <locking isolation="READ_COMMITTED"/>
+                    <transaction locking="OPTIMISTIC" mode="NONE"/>
+                    <file-store passivation="true" purge="false"/>
+                </local-cache>
+            </cache-container>	
